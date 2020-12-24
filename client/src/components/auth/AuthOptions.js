@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 const AuthOptions = () => {
   const history = useHistory();
   return (
-    <div>
+    <div className="auth-options">
       <button onClick={() => history.push("/register")}>Register</button>
       <button onClick={() => history.push("/login")}>Log in</button>
     </div>
