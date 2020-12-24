@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const auth = require("../middleware/auth");
 const User = require("../models/userModel");
-require("dotenv").config();
 
 router.post("/register", async (req, res) => {
   try {
@@ -24,7 +24,7 @@ router.post("/register", async (req, res) => {
     if (existingUser)
       return res.status(400).json({ msg: "Account already exists." });
 
-    // if (!displayName) displayName = email;
+    if (!displayedName) displayedName = email;
 
     //! HASH
     const salt = await bcrypt.genSalt();
@@ -38,7 +38,7 @@ router.post("/register", async (req, res) => {
 
     const savedUser = await newUser.save();
     res.json(savedUser);
-  } catch (error) {
+  } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
@@ -74,7 +74,34 @@ router.post("/login", async (req, res) => {
         email: user.email,
       },
     });
-  } catch (error) {
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.delete("/delete", auth, async (req, res) => {
+  //! Got the user id from auth
+  try {
+    const deletedUser = await User.findByIdAndDelete(req.user);
+    res.json(deletedUser);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.post("/tokenIsValid", async (req, res) => {
+  try {
+    const token = req.header("x-auth-token");
+    if (!token) return res.json(false);
+
+    const verified = jwt.verify(token, process.env.JWT_SECRET);
+    if (!verified) return res.json(false);
+
+    const user = await User.findById(verified.id);
+    if (!user) return res.json(false);
+
+    return res.json(true);
+  } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
