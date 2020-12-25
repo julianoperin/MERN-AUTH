@@ -5,8 +5,8 @@ import AuthOptions from "../auth/AuthOptions";
 const Header = () => {
   return (
     <header>
-      <Link to="/">
-        <h1>MERN TO DO</h1>
+      <Link to="/" className="logo">
+        <h1>MERN TODO</h1>
       </Link>
       <AuthOptions />
     </header>

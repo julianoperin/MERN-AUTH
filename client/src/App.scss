@@ -11,7 +11,7 @@ body {
   background: #fafafa;
 }
 
-a {
+.logo {
   color: #000;
   text-decoration: none;
   &:hover {
@@ -30,7 +30,6 @@ button,
 input[type="submit"] {
   border: none;
   background: none;
-  color: unset;
   cursor: pointer;
 }
 
@@ -58,5 +57,14 @@ header {
   .auth-options,
   button:focus {
     outline: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+  button {
+    font-size: 0.8rem;
   }
 }
