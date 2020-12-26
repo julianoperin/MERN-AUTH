@@ -106,4 +106,15 @@ router.post("/tokenIsValid", async (req, res) => {
   }
 });
 
+//! Find the user
+//! Its coming from the front end header with the token
+router.get("/", auth, async (req, res) => {
+  const user = await User.findById(req.user);
+  res.json({
+    displayedName: user.displayedName,
+    id: user._id,
+  });
+  console.log(user);
+});
+
 module.exports = router;
