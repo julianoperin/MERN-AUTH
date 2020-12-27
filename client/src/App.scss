@@ -118,6 +118,22 @@ header {
   }
 }
 
+// Error notice
+.error-notice {
+  border: 1px solid rgb(109, 97, 97);
+  background: rgb(243, 121, 121);
+  padding: 0.5rem;
+  border-radius: 7px;
+  display: flex;
+  justify-content: space-between;
+  button {
+    font-size: 1rem;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
 @media screen and (max-width: 500px) {
   h1 {
     font-size: 1.2rem;
