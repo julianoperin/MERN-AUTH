@@ -23,6 +23,7 @@ app.use(cors());
 
 //! Include route as middleware
 app.use("/users", require("./routes/userRouter"));
+app.use("/todos", require("./routes/todoRouter"));
 
 app.get("/", (req, res) => {
   res.send("Hi there ");
