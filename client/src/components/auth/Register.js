@@ -33,23 +33,24 @@ const Register = () => {
 
   return (
     <div className="page">
-      <h1>Register</h1>
-      <form>
+      <form className="form">
+        <h1>Register</h1>
+
         <label htmlFor="register-email">Email</label>
         <input
-          type="text"
+          type="email"
           id="register-email"
           onChange={(e) => setEmail(e.target.value)}
         />
 
         <label htmlFor="register-password">Password</label>
         <input
-          type="text"
+          type="password"
           id="register-password"
           onChange={(e) => setPassword(e.target.value)}
         />
         <input
-          type="text"
+          type="password"
           id="register-password"
           placeholder="Verify password"
           onChange={(e) => setPasswordCheck(e.target.value)}

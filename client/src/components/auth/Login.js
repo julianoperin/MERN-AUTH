@@ -13,11 +13,13 @@ const Login = () => {
   const submit = async (e) => {
     e.preventDefault();
     const loginUser = { email, password };
+    console.log(loginUser);
 
     //! Login
-    const loginRes = await Axios.post("http://localhost:5000/users/login", {
-      loginUser,
-    });
+    const loginRes = await Axios.post(
+      "http://localhost:5000/users/login",
+      loginUser
+    );
 
     //! Get the response data
     setUserData({
@@ -29,8 +31,24 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="page">
+      <form className="form">
+        <h1>Login</h1>
+
+        <label htmlFor="login-email">Email</label>
+        <input
+          type="text"
+          id="login-email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <label htmlFor="login-password">Password</label>
+        <input
+          type="text"
+          id="login-password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <input type="submit" value="Login" onClick={submit} />
+      </form>
     </div>
   );
 };

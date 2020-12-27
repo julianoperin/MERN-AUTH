@@ -60,11 +60,73 @@ header {
   }
 }
 
+.page {
+  min-height: 93vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    text-align: center;
+    margin: 0.5rem;
+  }
+}
+
+.container {
+}
+
+// form
+.form {
+  width: 600px;
+  padding: 0.8rem;
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 0.3rem;
+    border: solid gray 1px;
+    border-radius: 7px;
+  }
+
+  input:focus {
+    border: 1px solid #ffa5a5;
+    box-shadow: inset 0px 0px 3px rgba(233, 162, 162, 0.5);
+    outline: none;
+  }
+
+  input {
+    margin-bottom: 1rem;
+  }
+
+  label {
+    margin-bottom: 0.2rem;
+  }
+  input,
+  label {
+    display: block;
+  }
+  input[type="submit"] {
+    border: 1px solid #3b2929;
+    background: #fafafa;
+    padding: 0.3rem 0.5rem;
+    font-size: 1.1rem;
+    border-radius: 7px;
+
+    &:hover {
+      background: #999;
+    }
+  }
+}
+
 @media screen and (max-width: 500px) {
   h1 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   button {
     font-size: 0.8rem;
+  }
+
+  header button {
+    font-size: 0.9rem !important;
   }
 }
